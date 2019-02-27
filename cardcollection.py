@@ -3,7 +3,6 @@
 
 
 # Todo:
-# create backup of collection on startup
 # extend card not found path in non-card addition path
 # extend data you can provide (i.e. mana color, mana cost, etc.)
 
@@ -18,7 +17,7 @@ def main():
             tokens = line.strip().split()
             collection[' '.join(tokens[:-1])] = tokens[-1]
         print('Collection')
-        print('-' * 30 + ' \n')
+        print('_' * 30 + ' \n')
         for k, v in collection.items():
             print('{:<30s}|  {:>10s}x'.format(k, v))
         print('\n')
@@ -41,7 +40,7 @@ def main():
             try:
                 print('{}(s): {}'.format(card.capitalize(), collection[card.lower()]))
             except KeyError:
-                print('{} not found, would you like to add it to your collection? (y/n)'.format(card.capitalize()))
+                print('Card not found, try again.')
         #card-addition path
         else:
             card = card.split()
@@ -55,6 +54,7 @@ def main():
         card = ''
 
         while card == '':
+            sys.stdout.write('Enter a card name [+ number]: ')
             card = input()
     
     # Truncating collection.txt and saving the new dictionary to the file.
