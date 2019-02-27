@@ -22,7 +22,11 @@ def main():
         for k, v in collection.items():
             print('{:<30s}|  {:>10s}x'.format(k, v))
         print('\n')
-    
+
+    with open('collection_backup.txt', 'w') as f:
+        for cards in sorted(collection):
+            f.write(str(cards) + ' ' + str(collection[cards]) + '\n')
+
     #initialising the input
     print('Type "exit" to exit the program.')
     sys.stdout.write('Enter a card name [+ number]: ')
